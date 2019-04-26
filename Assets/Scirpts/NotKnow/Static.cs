@@ -113,7 +113,7 @@ public class Static
 		
 
 	public string Level="2.0.1";
-    public string FamerName = "jxz";
+    public string FamerName = "mdzy";
 	public bool Lock=true;
 	public bool MusicSwich = true;
     //替换芯域名
