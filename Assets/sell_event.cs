@@ -3,7 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class sell_event : MonoBehaviour {
+public class sell_event : MonoBehaviour
+{
 
     [SerializeField]
     Text tital;
@@ -12,7 +13,9 @@ public class sell_event : MonoBehaviour {
 
 
     [SerializeField]
-    Button button0, button1;
+    Button button0, button1, button2;
+
+    public Color[] BgColors;
 
 
     string tital_text;
@@ -26,12 +29,18 @@ public class sell_event : MonoBehaviour {
         sell0();
         click();
 
-        button0.onClick.AddListener(delegate() {
+        button0.onClick.AddListener(delegate ()
+        {
             sell0();
         });
 
-        button1.onClick.AddListener(delegate () {
+        button1.onClick.AddListener(delegate ()
+        {
             sell1();
+        });
+        button2.onClick.AddListener(delegate ()
+        {
+            sell2();
         });
     }
 
@@ -41,16 +50,28 @@ public class sell_event : MonoBehaviour {
         id = "0";
         tital_text = "推广收益";
         worning = "500以上可以出售";
-        button0.GetComponent<Image>().color = new Color(0.8f,0.8f,0.8f);
-        button1.GetComponent<Image>().color = new Color(1, 1, 1);
+        button0.GetComponent<Image>().color = BgColors[0];
+        button1.GetComponent<Image>().color = BgColors[1];
+        button2.GetComponent<Image>().color = BgColors[1];
     }
     public void sell1()
     {
         id = "1";
-        tital_text = "收益转存";
+        tital_text = "转存收益";
         worning = "1200以上可以出售";
-        button0.GetComponent<Image>().color = new Color(1, 1, 1);
-        button1.GetComponent<Image>().color = new Color(0.8f, 0.8f, 0.8f);
+        button0.GetComponent<Image>().color = BgColors[1];
+        button1.GetComponent<Image>().color = BgColors[0];
+        button2.GetComponent<Image>().color = BgColors[1];
+    }
+
+    public void sell2()
+    {
+        id = "2";
+        tital_text = "团队收益";
+        worning = "1200以上可以出售";
+        button0.GetComponent<Image>().color = BgColors[1];
+        button1.GetComponent<Image>().color = BgColors[1];
+        button2.GetComponent<Image>().color = BgColors[0];
     }
 
     public void Exit()
@@ -59,6 +80,8 @@ public class sell_event : MonoBehaviour {
             sell0();
         if (Static.Instance.GetValue("type_id") == "1")
             sell1();
+        if (Static.Instance.GetValue("type_id") == "2")
+            sell2();
     }
 
 
